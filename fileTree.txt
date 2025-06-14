@@ -1,0 +1,20 @@
+Dockerized-MERN-App/
+├── backend/
+│   ├── Dockerfile
+│   ├── index.js
+│   ├── package.json
+│   └── .env.example
+├── frontend/
+│   ├── Dockerfile
+│   ├── vite.config.js
+│   ├── package.json
+│   ├── public/
+│   │   └── index.html
+│   └── src/
+│       ├── App.jsx
+│       ├── main.jsx
+├── docker-compose.yml
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+└── README.md
