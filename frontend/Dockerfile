@@ -1,18 +1,28 @@
-# Stage 1: Build
-FROM node:18-alpine as builder
+# frontend/Dockerfile
+
+FROM node:18-alpine AS builder
+
 WORKDIR /app
 
-# Copy everything early
+# Copy all required files first
 COPY . .
 
 # Install dependencies
 RUN npm install
 
-# Build
+# Run build (make sure index.html is in root or set root in vite.config.js)
 RUN npm run build
 
-# Stage 2: Serve with nginx
+# Use Nginx to serve the app
 FROM nginx:stable-alpine
+
+# Remove default nginx static files
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy built files
 COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
