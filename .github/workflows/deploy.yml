@@ -30,6 +30,9 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/mern-app-backend:latest
           push: true
 
+      - name: Debug files in build context
+        run: ls -la ./frontend
+
       - name: Build and push frontend image
         uses: docker/build-push-action@v4
         with:
