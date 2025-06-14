@@ -1,9 +1,14 @@
 # Stage 1: Build
 FROM node:18-alpine as builder
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+
+# Copy everything early
 COPY . .
+
+# Install dependencies
+RUN npm install
+
+# Build
 RUN npm run build
 
 # Stage 2: Serve with nginx
