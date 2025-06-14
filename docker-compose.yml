@@ -11,6 +11,7 @@ services:
       - backend
     networks:
       - app-network
+
   backend:
     build:
       context: ./backend
@@ -19,8 +20,6 @@ services:
       - 5000:5000
     environment:
       - PORT=5000
-    depends_on:
-      - frontend
     networks:
       - app-network
 
