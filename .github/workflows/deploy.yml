@@ -22,6 +22,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Debug backend folder
+        run: ls -la ./backend
+
       - name: Build and push backend image
         uses: docker/build-push-action@v4
         with:
@@ -30,8 +33,12 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/mern-app-backend:latest
           push: true
 
-      - name: Debug files in build context
-        run: ls -la ./frontend
+      - name: Debug frontend folder
+        run: |
+          ls -la ./frontend
+          cat ./frontend/Dockerfile
+          cat ./frontend/vite.config.js || echo "vite.config.js not found"
+          cat ./frontend/package.json || echo "package.json not found"
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v4
