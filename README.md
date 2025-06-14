@@ -31,6 +31,8 @@ This project serves as a foundational template for full-stack development using 
 
 ## Folder Structure
 
+<pre>
+    
 Dockerized-MERN-App/
 ├── backend/
 │ ├── Dockerfile
@@ -52,6 +54,7 @@ Dockerized-MERN-App/
 │ └── deploy.yml
 ├── README.md
 
+</pre>
 
 ## Features
 
